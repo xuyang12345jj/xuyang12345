@@ -33,3 +33,43 @@
 
 老师的水平可能也会有高低，于是现在流行的观点大概是，这个老师很水我就不听讲，这个课太烂我不听，大不了自己看，但问题来了，我始终相信老师的整体水平还是如此学生的，所以当一个学生说老师讲得烂的时候，学生能说出来具体哪里烂，而且能指出明确的点以及可改进的方案的，那是十分不错的一种表现！
 
+单元测试
+关于冒泡排序的工作原理有几种，有的资料说是第k+x个位置与第k个位置比较（x>0的自然数），符合交换条件就交换。有的资料说是第k+1个位置与第k个位置比较。
+
+我刚查资料总结了一下。我觉得既然是冒泡，那就应该所有元素每一趟排序就应该最多往上冒一层。不可能是从水底直接冒到水面。
+所以正确的排序思想应该是：相邻的两个元素相比较，符合冒泡才冒泡（交换）。
+
+我的代码
+
+public class ArraySortTest {
+
+			public void sort(int[] n) {
+        //第一个for循环表示第几次循环
+				for(int i=1;i<n.length;i++) {
+        //第二个for循环表示该次循环进行几次比较
+					for(int j=0;j<n.length-i;j++) {
+						//判断比较是否进行换位
+            if(n[j]>n[j+1]) {
+							int temp = n[j];
+							n[j] = n[j+1];
+							n[j+1] = temp;
+						}
+					}
+					print(n);
+				}
+			}
+				public void print(int[] n) {
+				for(int i=0;i<n.length;i++)
+				//输出排完序的数组
+					System.out.print(n[i] + "\t");
+				System.out.println();
+			}
+			
+			public static void main(String[] args) {
+				ArraySortTest s = new ArraySortTest();
+				//此处为需要排序的数组
+				int[] n = {100,60,80,90,75,38};
+				s.sort(n);
+				s.print(n);
+			}
+		}    
